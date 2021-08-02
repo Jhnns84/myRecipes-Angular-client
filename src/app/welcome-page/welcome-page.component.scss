@@ -1,0 +1,25 @@
+.main-page {
+  background-image: linear-gradient(to bottom right, #DBF4CD, #FFC0AB);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-page-title {
+  font-size: 60px;
+  font-weight: 450;
+  color: white;
+}
+
+button {
+  background-color: #3cb371;
+  color: white;
+  width: 100%;
+  font-weight: 450;
+  margin-top: 50px;
+  padding: 20px;
+  font-size: 30px;
+}

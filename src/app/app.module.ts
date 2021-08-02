@@ -16,15 +16,38 @@ import { FormsModule } from '@angular/forms';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+
+import { MatIconModule } from '@angular/material/icon';
+
+import { RouterModule, Routes } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
+import { CuisineComponent } from './cuisine/cuisine.component';
+import { MealtypeComponent } from './mealtype/mealtype.component';
+import { ProfileComponent } from './profile/profile.component';
+import { DetailsComponent } from './details/details.component';
+
+const appRoutes: Routes = [
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: 'recipes', component: RecipeCardComponent },
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationFormComponent,
     UserLoginFormComponent,
-    RecipeCardComponent
+    RecipeCardComponent,
+    WelcomePageComponent,
+    NavbarComponent,
+    CuisineComponent,
+    MealtypeComponent,
+    ProfileComponent,
+    DetailsComponent
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -35,7 +58,8 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

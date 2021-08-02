@@ -316,7 +316,7 @@ private handleError(error: HttpErrorResponse): any {
 @Injectable({
   providedIn: 'root'
 })
-export class AddFavroriteService {
+export class AddFavoriteService {
   constructor(private http: HttpClient) {
   }
 

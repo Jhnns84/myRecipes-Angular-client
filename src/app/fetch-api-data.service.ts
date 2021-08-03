@@ -121,7 +121,7 @@ export class FetchApiDataService {
  removeFavorite(id: string): Observable<any> {
   const token = localStorage.getItem('token');
   const user = localStorage.getItem('user');
-  return this.http.put(apiUrl + `removefavorites/users/${user}/recipes/${id}`, {headers: new HttpHeaders(
+  return this.http.put(apiUrl + `removefavorites/users/${user}/recipes/${id}`, {}, {headers: new HttpHeaders(
     {
       Authorization: 'Bearer ' + token,
     })

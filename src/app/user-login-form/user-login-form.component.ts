@@ -40,7 +40,7 @@ loginUser(): void {
      localStorage.setItem('email', result.user.Email);
      localStorage.setItem('birthday', result.user.Birthday);
      localStorage.setItem('token', result.token);
-     this.snackBar.open("Logging in!", 'OK', {
+     this.snackBar.open("Logged in!", 'OK', {
         duration: 2000
      });
      this.router.navigate(['recipes']);

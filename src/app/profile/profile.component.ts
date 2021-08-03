@@ -82,7 +82,7 @@ export class ProfileComponent implements OnInit {
     });
     setTimeout(function () {
       window.location.reload();
-    }, 10000);
+    }, 1000);
   }
 
   deleteUser(): void {

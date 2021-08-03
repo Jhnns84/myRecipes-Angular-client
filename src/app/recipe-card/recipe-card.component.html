@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div style="display: flex; flex-wrap: wrap; justify-content: space-around; text-align: center;">
+<div class="container" >
   <mat-card *ngFor="let recipe of recipes;" style="margin: 10px; flex: 0 1 auto;">
       <mat-card-header>
       <mat-card-title>{{recipe.Name}}</mat-card-title>
@@ -38,7 +38,8 @@
                 )'>
               Details
           </button>
-          <mat-icon>favorite_border</mat-icon>
+          <mat-icon style="cursor: pointer" (click)='addFavorite(recipe._id, recipe.Name)'>favorite_border
+      </mat-icon>
       </mat-card-actions>
   </mat-card>
 </div>

@@ -26,10 +26,12 @@ import { CuisineComponent } from './cuisine/cuisine.component';
 import { MealtypeComponent } from './mealtype/mealtype.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DetailsComponent } from './details/details.component';
+import { ProfileUpdateComponent } from './profile-update/profile-update.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'recipes', component: RecipeCardComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
     CuisineComponent,
     MealtypeComponent,
     ProfileComponent,
-    DetailsComponent
+    DetailsComponent,
+    ProfileUpdateComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetAllRecipesService } from '../fetch-api-data.service'
+import { FetchApiDataService } from '../fetch-api-data.service'
 
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,7 +16,7 @@ import { MealtypeComponent } from '../mealtype/mealtype.component';
 export class RecipeCardComponent {
   recipes: any[] = [];
   constructor(
-    public fetchApiData: GetAllRecipesService,
+    public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     ) { }
@@ -66,6 +66,18 @@ showDetails(
     data: { name, imagePath, description, difficulty, time },
     panelClass: 'details-dialog',
   });
+}
+
+addFavorite(id: string, name: string): void {
+  this.fetchApiData.addFavorite(id).subscribe((resp: any) => {
+    console.log(resp);
+    let favrecipes = resp.FavoriteRecipes;
+    localStorage.setItem('FavoriteRecipes', favrecipes);
+    this.snackBar.open(`${name} has been added to your favorite recipes`, 'OK', {
+      duration: 2000,
+    });
+  });
+
 }
 
 }

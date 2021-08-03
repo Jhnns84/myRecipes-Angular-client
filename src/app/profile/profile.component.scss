@@ -1,0 +1,38 @@
+.profile-container {
+ text-align: center;
+ background-image: linear-gradient(to bottom right, #DBF4CD, #FFC0AB);
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+ min-height:100%;
+}
+
+.data {
+  text-decoration: underline;
+}
+
+h1 {
+  padding-top: 20px;
+}
+
+.button-container {
+  margin-bottom: 20px;
+}
+
+// .favorites {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, 300px) 20%;
+//   padding: 0 1em;
+//   margin: 30px;
+//   max-width: 1200px;
+// }
+
+.favorites {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.card-container {
+  flex: auto; 
+  max-width: 300px;
+  margin: 30px;
+}

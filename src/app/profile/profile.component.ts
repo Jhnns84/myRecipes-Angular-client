@@ -17,6 +17,13 @@ export class ProfileComponent implements OnInit {
   recipes: any[] = [];
   favorites: any = [];
 
+  /**
+   * 
+   * @param fetchApiData 
+   * @param router 
+   * @param snackBar 
+   * @param dialog 
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public router: Router,
@@ -28,15 +35,9 @@ export class ProfileComponent implements OnInit {
     this.getUser();
   }
 
-  // getUser(): void {
-
-  //   let user = localStorage.getItem('user');
-  //   this.fetchApiData.getUser(user).subscribe((res: any) => {
-  //   this.user = res;
-  //   this.getRecipes();
-  // });
-  // }
-
+/**
+ * This gets the current users information
+ */
   getUser(): void {
     let FavoriteRecipes = localStorage.getItem('FavoriteRecipes');
     let Username = localStorage.getItem('user');
@@ -51,6 +52,9 @@ export class ProfileComponent implements OnInit {
     this.getRecipes();
   }
 
+  /**
+   * This gets all recipes
+   */
   getRecipes(): void {
     this.fetchApiData.getAllRecipes().subscribe((resp: any) => {
       this.recipes = resp;
@@ -58,6 +62,10 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+/**
+ * This filters the recipes to find the users favorites
+ * @returns array of favorite recipe objects
+ */
   filterFavorites(): void {
     this.recipes.forEach((recipe: any) => {
       if (this.user.FavoriteRecipes.includes(recipe._id)) {
@@ -67,6 +75,11 @@ export class ProfileComponent implements OnInit {
     return this.favorites;
   }
 
+  /**
+   * This sends a put request to remove a favorite
+   * @param id 
+   * @param name 
+   */
   removeFavorites(id: string, name: string): void {
     this.fetchApiData.removeFavorite(id).subscribe((resp: any) => {
       console.log(resp);
@@ -85,6 +98,9 @@ export class ProfileComponent implements OnInit {
     }, 1000);
   }
 
+  /**
+   * This asks the user to confirm and then sends a delete request to delete the user
+   */
   deleteUser(): void {
     let check = confirm(
       'Are you sure you want to delete your profile?'
@@ -109,6 +125,9 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  /**
+   * This opens the dialog to edit the user info
+   */
   profileUpdateDialog(): void {
     this.dialog.open(ProfileUpdateComponent, {
       panelClass: 'update-dialog',

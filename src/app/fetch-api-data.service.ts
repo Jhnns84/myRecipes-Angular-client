@@ -5,7 +5,22 @@ import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-//Declaring the api url that will provide data for the client app
+/**
+  *SERVICES: 
+   * 1. Registration 
+   * 2. Login
+   * 3. Get all Recipes
+   * 4. Get Cuisine
+   * 5. Get Mealtype
+   * 6. Get User
+   * 7. Get Favorites
+   * 8. Add Favorite
+   * 9. Remove Favorite
+   * 10. Edit User
+   * 11. Delete User
+*/
+
+// API URL
 const apiUrl = 'https://jm-myrecipes-api.herokuapp.com/';
 
 
@@ -17,8 +32,11 @@ export class FetchApiDataService {
  // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient, private router: Router) { }
 
-
- // REGISTRATION
+/**
+ * Call to Registration Endpoint
+ * @param userDetails: Username, Password, Email, Birthday
+ * @returns 
+ */
   userRegistration(userDetails: any): Observable<any> {
     return this.http.post(apiUrl + 'users', userDetails).pipe(
     catchError(this.handleError)
@@ -27,7 +45,11 @@ export class FetchApiDataService {
 
 
 
- // LOGIN
+/**
+ * Call to Login Endpoint
+ * @param userDetails: Username, Password
+ * @returns username and bearer token
+ */
   userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'login', userDetails).pipe(
@@ -37,7 +59,10 @@ export class FetchApiDataService {
 
 
 
- // GET ALL RECIPES
+/**
+ * Call to recipes endpoint get all recipes
+ * @returns array of all recipe objects
+ */
   getAllRecipes(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'recipes', {headers: new HttpHeaders(
@@ -50,7 +75,10 @@ export class FetchApiDataService {
     );
   }
 
-  // GET A CUISINE
+/**
+ * Call to recipes endpoint to get a cuisine
+ * @returns cuisine object
+ */
   getCuisine(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'recipes/Cuisines/:Name', {headers: new HttpHeaders(
@@ -63,7 +91,10 @@ export class FetchApiDataService {
     );
   }
 
-  // GET A MEALTYPE
+/**
+ * Call to recipes endpoint to get a mealtype
+ * @returns mealtype object
+ */
   getMealtype(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'recipes/Mealtypes/:Name', {headers: new HttpHeaders(
@@ -76,7 +107,11 @@ export class FetchApiDataService {
     );
   }
 
-  // GET A USER
+/**
+ * Call to the user endpoint
+ * @param user 
+ * @returns user object
+ */
   getUser(user: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'users/:Username', {headers: new HttpHeaders(
@@ -89,7 +124,10 @@ export class FetchApiDataService {
     );
   }
 
-  // GET A USERS FAVORITES
+/**
+ * Call to the users endpoint to get favorites
+ * @returns 
+ */
   getFavorites(): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
@@ -103,7 +141,11 @@ export class FetchApiDataService {
     );
   }
 
-  // ADD A FAVORITE
+/**
+ * Call to users endpoint to add a recipe to the users favorites
+ * @param id 
+ * @returns 
+ */
   addFavorite(id: string): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
@@ -117,7 +159,11 @@ export class FetchApiDataService {
     );
   }
 
- // REMOVE A FAVORITE
+/**
+ * Call to users endpoint to remove a recipe from the users favorites
+ * @param id 
+ * @returns 
+ */
  removeFavorite(id: string): Observable<any> {
   const token = localStorage.getItem('token');
   const user = localStorage.getItem('user');
@@ -131,7 +177,11 @@ export class FetchApiDataService {
   );
 }
 
- // EDIT A USER
+/**
+ * Call to users endpoint to edit a users details
+ * @param userDetails 
+ * @returns 
+ */
  editUser(userDetails: any): Observable<any> {
   const token = localStorage.getItem('token');
   const user = localStorage.getItem('user');
@@ -145,7 +195,10 @@ export class FetchApiDataService {
   );
 }
 
- // DELETE A USER
+/**
+ * Call to users endpoint to delete a user
+ * @returns 
+ */
  deleteUser(): Observable<any> {
   const token = localStorage.getItem('token');
   const user = localStorage.getItem('user');
@@ -166,6 +219,11 @@ private extractResponseData(res: Response | Object): any {
   return body || { };
 }
 
+/**
+ * Error handling
+ * @param error 
+ * @returns 
+ */
 private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
     console.error('Some error occurred:', error.error.message);

@@ -9,6 +9,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class CuisineComponent implements OnInit {
 
+    /**
+   * This takes the data from the recipe-card component
+   * @param data 
+   */
   constructor(
 
     @Inject(MAT_DIALOG_DATA)

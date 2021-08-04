@@ -15,6 +15,13 @@ import { MealtypeComponent } from '../mealtype/mealtype.component';
 })
 export class RecipeCardComponent {
   recipes: any[] = [];
+
+  /**
+   * 
+   * @param fetchApiData 
+   * @param dialog 
+   * @param snackBar 
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
@@ -25,6 +32,10 @@ ngOnInit(): void {
   this.getRecipes();
 }
 
+/**
+ * This gets all recipes from the database
+ * @returns all recipe objects
+ */
 getRecipes(): void {
   this.fetchApiData.getAllRecipes().subscribe((resp: any) => {
       this.recipes = resp;
@@ -33,7 +44,11 @@ getRecipes(): void {
     });
   }
 
-
+/**
+ * This shows a dialog with information about the cuisine of the chosen recipe
+ * @param name 
+ * @param description 
+ */
 showCuisine(
   name: string,
   description: string
@@ -44,6 +59,11 @@ showCuisine(
   });
 }
 
+/**
+ * This shows a dialog with information about the mealtype of the chosen recipe
+ * @param name 
+ * @param description 
+ */
 showMealType(
   name: string,
   description: string
@@ -54,6 +74,14 @@ showMealType(
   });
 }
 
+/**
+ * This shows a dialog with details about the chosen recipe
+ * @param name 
+ * @param imagePath 
+ * @param description 
+ * @param difficulty 
+ * @param time 
+ */
 showDetails(
   name: string,
   imagePath: string,
@@ -68,6 +96,11 @@ showDetails(
   });
 }
 
+/**
+ * This adds the chosen recipe to the users favorites
+ * @param id 
+ * @param name 
+ */
 addFavorite(id: string, name: string): void {
   this.fetchApiData.addFavorite(id).subscribe((resp: any) => {
     console.log(resp);

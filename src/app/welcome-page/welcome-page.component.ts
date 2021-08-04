@@ -8,6 +8,11 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './welcome-page.component.html',
   styleUrls: ['./welcome-page.component.scss']
 })
+
+/**
+ * This component welcomes logged out users and displays buttons that trigger the registration- and login-dialogs
+ */
+
 export class WelcomePageComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
   ngOnInit(): void {

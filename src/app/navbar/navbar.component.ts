@@ -10,6 +10,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class NavbarComponent implements OnInit {
 
+  /**
+   * 
+   * @param snackBar 
+   * @param router 
+   */
   constructor(
     public snackBar: MatSnackBar,
     public router: Router
@@ -18,6 +23,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * This clears the local storage and navifates to the welcome screen when the user logs out
+   */
   signOut(): void {
     localStorage.clear();
     this.router.navigate(['welcome']);

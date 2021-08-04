@@ -13,6 +13,12 @@ export class ProfileUpdateComponent implements OnInit {
 
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
+  /**
+   * 
+   * @param fetchApiData 
+   * @param dialogRef 
+   * @param snackBar 
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<ProfileUpdateComponent>,
@@ -20,6 +26,10 @@ export class ProfileUpdateComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  /**
+   * This submits a request to update the users information
+   */
   editUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe(
       (resp) => {
